@@ -1,0 +1,27 @@
+.header {
+  background-color: var(--fill-colour);
+  height: 60px;
+
+  .container {
+    height: 100%;
+  }
+}
+
+.navbar-brand {
+  padding: 0 0 10px 0;
+  margin: 0;
+}
+
+#logo {
+  width: 189px;
+}
+
+.header-filler {
+  padding-bottom: 60px;
+}
+
+.navbar {
+  background-color: var(--tertiary-colour);
+  height: 40px;
+  color: #fff;
+}

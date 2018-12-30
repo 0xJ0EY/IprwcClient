@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { ShoppingcartModule } from '../shoppingcart/shoppingcart.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { ShoppingcartModule } from '../shoppingcart/shoppingcart.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ShoppingcartModule
   ],
   exports: [

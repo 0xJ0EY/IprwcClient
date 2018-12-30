@@ -10,7 +10,7 @@ export class CartService {
 
   private _items: BehaviorSubject<Map<number, CartItem>> = new BehaviorSubject<Map<number, CartItem>>(new Map<number, CartItem>());
 
-  constructor() { 
+  constructor() {
     this.loadFromDisk();
   }
 
@@ -19,17 +19,54 @@ export class CartService {
   }
 
   public addItem(product: Product, amount: number): void {
+    if (amount < 1) return;
     const items = this._items.getValue();
 
-    if (items.has(product.id)) {
-      const value = items.get(product.id);
-      value.amount += amount;
+    if (items.has(product.id))
+      return this.incrementAmount(product, amount);
 
-      items.set(product.id, value);
-    } else {
-      const item = new CartItem(product, amount);
-      items.set(product.id, item);
-    }
+    const item = new CartItem(product, amount);
+    items.set(product.id, item);
+
+    this._items.next(items);
+    this.saveToDisk();
+  }
+
+  public incrementAmount(product: Product, amount: number): void {
+    // Return if the amount is lower then 1
+    if (amount < 1) return;
+    const items = this._items.getValue();
+
+    // Add the item the product cannot be found
+    if (!items.has(product.id))
+      return this.addItem(product, amount);
+
+    const value = items.get(product.id);
+    value.amount += amount;
+
+    items.set(product.id, value);
+
+    this._items.next(items);
+    this.saveToDisk();
+  }
+
+  public decrementAmount(product: Product, amount: number): void {
+    // Return if the amount is lower then 1
+    if (amount < 1) return;
+    const items = this._items.getValue();
+
+    // Return if the product cannot be found
+    if (!items.has(product.id)) return;
+
+    const value = items.get(product.id);
+
+    // Delete the item if it has less then 1 instance in the cart
+    if (value.amount - amount < 1)
+      return this.deleteItem(product);
+
+    value.amount -= amount;
+
+    items.set(product.id, value);
 
     this._items.next(items);
     this.saveToDisk();
@@ -62,7 +99,7 @@ export class CartService {
     if (items == null) {
       items = new Map<number, CartItem>();
     }
-    
+
     this.items.next(items);
   }
 
@@ -71,7 +108,7 @@ export class CartService {
    * TODO: Create this
    */
   private async updateProducts() {
-    
+
   }
 
 }

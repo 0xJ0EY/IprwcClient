@@ -1,0 +1,128 @@
+.shoppingcart {
+  display: block;
+  position: relative;
+  z-index: 100;
+
+  &.active {
+    border-radius: 3px 3px 0 0;
+    background-color: var(--accent-colour);
+
+    .icon:hover {
+      background-color: inherit;
+    }
+  }
+
+  .icon:hover {
+    border-radius: 3px;
+    background-color: darken(#fff, 5);
+  }
+
+  .icon-container {
+    padding: 0 0 5px;
+
+    .icon {
+      display: block;
+      padding: 5px;
+
+      cursor: pointer;
+    }
+  }
+
+  .item-list {
+    right: 0;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    background-color: #fff;
+    overflow: hidden;
+
+    border-radius: 3px 0 3px 3px;
+
+    z-index: 99;
+
+    .footer {
+      position: absolute;
+
+      bottom: 0;
+      width: 100%;
+
+      display: block;
+      padding: 10px 20px 20px;
+
+      .buttons {
+        padding: 0;
+        text-align: right;
+
+        li {
+          display: inline-block;
+        }
+
+        .order-btn {
+          margin-left: 15px;
+
+          a {
+            border-radius: 3px;
+            padding: 10px;
+            background-color: var(--success-colour);
+            font-weight: 600;
+            color: var(--fill-colour);
+            border-bottom: 2px solid darken(#07cd6e, 7);
+
+            -webkit-transition: background-color 200ms ease-in-out;
+            -moz-transition: background-color 200ms ease-in-out;
+            -ms-transition: background-color 200ms ease-in-out;
+            -o-transition: background-color 200ms ease-in-out;
+            transition: background-color 200ms ease-in-out;
+
+            &:hover {
+              background-color: darken(#07cd6e, 7);
+              border-bottom: 2px solid darken(#07cd6e, 20)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .item-list.active {
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+    box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+  }
+
+  .cart {
+    width: 300px;
+
+    .cart-items {
+      margin: 10px 20px;
+    }
+
+    strong {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .empty-cart {
+      display: block;
+    }
+  }
+
+  /* SVG Styles */
+  &.active {
+    .cls-fill {
+      fill: var(--fill-colour);
+    }
+    .cls-stroke {
+      stroke: var(--fill-colour);
+    }
+  }
+
+  .cls-fill {
+    fill: var(--accent-colour);
+  }
+  .cls-stroke {
+    stroke: var(--accent-colour);
+  }
+}
+

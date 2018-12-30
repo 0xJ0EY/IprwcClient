@@ -1,10 +1,53 @@
-<button (click)="onClick()">Add item</button>
-<button (click)="onClickClear()">Clear items</button>
+<div class="shoppingcart" [ngClass]="{'active': active}">
+  <div class="icon-container">
+    <div class="icon">
+      <svg width="35px" height="26px" viewBox="0 0 35 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <style>
 
-<table>
-    <tr *ngFor="let item of items">
-        <td>{{ item.item.name }}</td>
-        <td>{{ item.amount }}</td>
-        <td><button (click)="onClickDelete(item)">Delete</button></td>
-    </tr>
-</table>
+        </style>
+        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Shoppingcart">
+            <circle id="Oval" class="cls-fill" cx="12" cy="22" r="2"></circle>
+            <circle id="Oval" class="cls-fill" cx="26" cy="22" r="2"></circle>
+            <polyline id="Path" class="cls-stroke" stroke-width="2" points="2 4 7 4 10 18 28 18 31 6.5"></polyline>
+            <polygon *ngIf="amount > 0" class="cls-fill" points="12 13 12.875 16 25.125 16 26 13"></polygon>
+            <polygon *ngIf="amount > 1" class="cls-fill" points="12 12 26 12 27 9 11 9"></polygon>
+            <polygon *ngIf="amount > 2" class="cls-fill" points="11 8 10 5 28 5 27 8"></polygon>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div [@openClose]="active ? 'open' : 'closed'" class="item-list" [ngClass]="{'active': active}">
+    <div class="cart">
+      <div class="cart-items">
+        <strong><a routerLink="/winkelwagen">Winkelwagen</a></strong>
+
+        <div *ngIf="amount > 0; else emptyCart">
+          <table>
+            <tr *ngFor="let item of items">
+              <td>{{ item.item.name }}</td>
+              <td>{{ item.amount }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="footer">
+        <ul class="buttons">
+          <li class="cart-btn">
+            <a routerLink="/winkelwagen">Wijzig winkelmandje</a>
+          </li>
+          <li class="order-btn">
+            <a routerLink="/winkelwagen">Bestellen</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <span class="empty-cart">Het winkelmandje is nog leeg!</span>
+</ng-template>
