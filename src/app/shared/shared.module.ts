@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderModule } from './header/header.module';
-import { ShoppingcartModule } from './shoppingcart/shoppingcart.module';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
+import {HeaderComponent} from './components/header/header.component';
+import {CategoryService} from './services/category.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent,
+    ShoppingcartComponent
+  ],
   imports: [
-    ShoppingcartModule,
-    HeaderModule,
     CommonModule
   ],
   exports: [
-    ShoppingcartModule,
-    HeaderModule
+    HeaderComponent,
+    ShoppingcartComponent
+  ],
+  providers: [
+    CategoryService
   ]
 })
 export class SharedModule { }

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
-import { CartItem } from './cart-item';
-import { Product } from '../product';
-import { CartService } from './cart.service';
+import { CartItemModel } from '../../models/cart-item.model';
+import { ProductModel } from '../../models/product.model';
+import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -35,7 +35,7 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
   active = false;
 
   // Current items in the cart
-  items: Array<CartItem>;
+  items: Array<CartItemModel>;
 
   // Amount of items in the cart
   amount: number;
@@ -68,7 +68,7 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
 
   // TODO: Delegate this to the product
   public onClick(evt) {
-    const product = new Product();
+    const product = new ProductModel();
 
     const products = ['AMD Threadripper', 'VEGA 64', 'Nvidia 2080 ti'];
 
@@ -83,15 +83,15 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
     this.active = this.elementRef.nativeElement.contains(evt.target);
   }
 
-  public onClickIncrement(product: CartItem) {
+  public onClickIncrement(product: CartItemModel) {
     this.cart.incrementAmount(product.item, 1);
   }
 
-  public onClickDecrement(product: CartItem) {
+  public onClickDecrement(product: CartItemModel) {
     this.cart.decrementAmount(product.item, 1);
   }
 
-  public onClickDelete(product: CartItem) {
+  public onClickDelete(product: CartItemModel) {
     this.cart.deleteItem(product.item);
   }
 

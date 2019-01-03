@@ -1,45 +1,51 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from './cart-item';
+import { CartItemModel } from '../models/cart-item.model';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Product } from '../product';
+import { ProductModel } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private _items: BehaviorSubject<Map<number, CartItem>> = new BehaviorSubject<Map<number, CartItem>>(new Map<number, CartItem>());
+  private _items: BehaviorSubject<Map<number, CartItemModel>> = new BehaviorSubject<Map<number, CartItemModel>>(new Map<number, CartItemModel>());
 
   constructor() {
     this.loadFromDisk();
   }
 
-  get items(): Subject<Map<number, CartItem>> {
-    return this._items
+  get items(): Subject<Map<number, CartItemModel>> {
+    return this._items;
   }
 
-  public addItem(product: Product, amount: number): void {
-    if (amount < 1) return;
+  public addItem(product: ProductModel, amount: number): void {
+    if (amount < 1) {
+       return;
+    }
     const items = this._items.getValue();
 
-    if (items.has(product.id))
+    if (items.has(product.id)) {
       return this.incrementAmount(product, amount);
+    }
 
-    const item = new CartItem(product, amount);
+    const item = new CartItemModel(product, amount);
     items.set(product.id, item);
 
     this._items.next(items);
     this.saveToDisk();
   }
 
-  public incrementAmount(product: Product, amount: number): void {
+  public incrementAmount(product: ProductModel, amount: number): void {
     // Return if the amount is lower then 1
-    if (amount < 1) return;
+    if (amount < 1) {
+      return;
+    }
     const items = this._items.getValue();
 
     // Add the item the product cannot be found
-    if (!items.has(product.id))
+    if (!items.has(product.id)) {
       return this.addItem(product, amount);
+    }
 
     const value = items.get(product.id);
     value.amount += amount;
@@ -50,19 +56,24 @@ export class CartService {
     this.saveToDisk();
   }
 
-  public decrementAmount(product: Product, amount: number): void {
+  public decrementAmount(product: ProductModel, amount: number): void {
     // Return if the amount is lower then 1
-    if (amount < 1) return;
+    if (amount < 1) {
+      return;
+    }
     const items = this._items.getValue();
 
     // Return if the product cannot be found
-    if (!items.has(product.id)) return;
+    if (!items.has(product.id)) {
+      return;
+    }
 
     const value = items.get(product.id);
 
     // Delete the item if it has less then 1 instance in the cart
-    if (value.amount - amount < 1)
+    if (value.amount - amount < 1) {
       return this.deleteItem(product);
+    }
 
     value.amount -= amount;
 
@@ -72,7 +83,7 @@ export class CartService {
     this.saveToDisk();
   }
 
-  public deleteItem(product: Product): void {
+  public deleteItem(product: ProductModel): void {
     const items = this._items.getValue();
 
     if (items.has(product.id)) {
@@ -84,20 +95,20 @@ export class CartService {
   }
 
   public clearCart(): void {
-    this._items.next(new Map<number, CartItem>());
+    this._items.next(new Map<number, CartItemModel>());
     this.saveToDisk();
   }
 
   private async saveToDisk() {
     const data = JSON.stringify(Array.from(this._items.getValue()));
-    localStorage.setItem("cart", data);
+    localStorage.setItem('cart', data);
   }
 
   private loadFromDisk(): void {
-    let items = <Map<number, CartItem>> new Map(JSON.parse(localStorage.getItem("cart")));
+    let items = <Map<number, CartItemModel>> new Map(JSON.parse(localStorage.getItem('cart')));
 
     if (items == null) {
-      items = new Map<number, CartItem>();
+      items = new Map<number, CartItemModel>();
     }
 
     this.items.next(items);
