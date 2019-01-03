@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { IndexPageComponent } from './pages/index/index-page.component';
+import { IndexPageComponent } from './pages/index-page/index-page.component';
+import { ShoppingcartPageComponent } from './pages/shoppingcart-page/shoppingcart-page.component';
+import {CategoryPageComponent} from './pages/category-page/category-page.component';
 
-const routes: Routes = [{
-  path: '',
-  component: IndexPageComponent,
-},
-{
-  path: 'winkelwagen',
-  component: IndexPageComponent
-}
+const routes: Routes = [
+  {
+    path: '',
+    component: IndexPageComponent,
+  },
+  {
+    path: 'category/:category',
+    component: CategoryPageComponent
+  },
+  {
+    path: 'winkelwagen',
+    component: ShoppingcartPageComponent
+  }
 ];
 
 @NgModule({
