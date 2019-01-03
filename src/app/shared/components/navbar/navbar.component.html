@@ -1,5 +1,29 @@
-<nav class="navbar">
-  <div class="container d-block">
-    <span *ngFor="let category of categories">{{ category.name }}</span>
+<nav class="navbar position-relative">
+  <div class="container justify-content-start" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+    <span *ngFor="let category of categories" (mouseover)="hoverCategory(category)"
+          [ngClass]="{'active': isSelected(category)}"
+    >
+      {{ category.name }}
+    </span>
+
+    <div class="subcategories" *ngIf="isActive() === true">
+      <div class="container justify-content-start">
+
+        <ol class="alphabet-list">
+          <li *ngFor="let item of activeSubcategories() | keyvalue"
+              [ngClass]="{'empty': item.value.length == 0}"
+              class="list-item"
+          >
+            <h3>{{ item.key }}</h3>
+
+            <ol *ngIf="item.value.length > 0" class="subcategories-list">
+              <li *ngFor="let val of item.value"><a>{{ val.name }}</a></li>
+            </ol>
+
+          </li>
+        </ol>
+
+      </div>
+    </div>
   </div>
 </nav>

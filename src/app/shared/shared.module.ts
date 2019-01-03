@@ -4,6 +4,7 @@ import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.co
 import {HeaderComponent} from './components/header/header.component';
 import {CategoryService} from './services/category.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
+    RouterModule,
     CommonModule
   ],
   exports: [
