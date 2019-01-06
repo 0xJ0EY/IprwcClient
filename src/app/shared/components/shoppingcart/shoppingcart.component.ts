@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, OnDestroy } from '@angular
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { CartItemModel } from '../../models/cart-item.model';
-import { ProductModel } from '../../models/product.model';
+import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 
@@ -68,7 +68,7 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
 
   // TODO: Delegate this to the product
   public onClick(evt) {
-    const product = new ProductModel();
+    const product = new Product();
 
     const products = ['AMD Threadripper', 'VEGA 64', 'Nvidia 2080 ti'];
 

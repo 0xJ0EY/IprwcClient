@@ -55,6 +55,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
       map.set(char, data);
     }
 
+    map.forEach((value, key) => {
+      if (value.length < 2) { return; }
+
+      // Sort the values
+      value.sort((t1, t2) => {
+        const x = t1.name.toLowerCase();
+        const y = t2.name.toLowerCase();
+
+        return +y - +x;
+      });
+
+      map.set(key, value);
+    });
+
     return map;
   }
 
@@ -63,6 +77,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   public onMouseLeave(): void {
+    this.active = false;
+    this.selected = null;
+  }
+
+  public onLinkClick(): void {
     this.active = false;
     this.selected = null;
   }

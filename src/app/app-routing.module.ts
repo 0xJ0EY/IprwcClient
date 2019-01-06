@@ -10,7 +10,7 @@ const routes: Routes = [
     component: IndexPageComponent,
   },
   {
-    path: 'category/:category',
+    path: 'categorie/:subcategory',
     component: CategoryPageComponent
   },
   {

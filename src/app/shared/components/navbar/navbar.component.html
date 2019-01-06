@@ -8,7 +8,6 @@
 
     <div class="subcategories" *ngIf="isActive() === true">
       <div class="container justify-content-start">
-
         <ol class="alphabet-list">
           <li *ngFor="let item of activeSubcategories() | keyvalue"
               [ngClass]="{'empty': item.value.length == 0}"
@@ -17,12 +16,10 @@
             <h3>{{ item.key }}</h3>
 
             <ol *ngIf="item.value.length > 0" class="subcategories-list">
-              <li *ngFor="let val of item.value"><a>{{ val.name }}</a></li>
+              <li *ngFor="let val of item.value"><a [routerLink]="['/categorie', val.title]" (click)="onLinkClick()">{{ val.name }}</a></li>
             </ol>
-
           </li>
         </ol>
-
       </div>
     </div>
   </div>

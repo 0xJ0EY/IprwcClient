@@ -3,5 +3,6 @@ export const environment = {
 
   routes: {
     categories: '/api/category',
+    subcategories: '/api/subcategory/{subcategory}/'
   }
 };

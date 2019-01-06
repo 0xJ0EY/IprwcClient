@@ -1,11 +1,11 @@
-import { ProductModel } from './product.model';
+import { Product } from './product.model';
 
 export class CartItemModel {
 
-    public item: ProductModel;
+    public item: Product;
     public amount: number;
 
-    constructor(item: ProductModel, amount?: number) {
+    constructor(item: Product, amount?: number) {
         this.item = item;
         this.amount = amount || 1;
     }

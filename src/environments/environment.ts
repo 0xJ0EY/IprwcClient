@@ -7,6 +7,7 @@ export const environment = {
 
   routes: {
     categories: 'http://localhost:8080/api/category',
+    subcategories: `http://localhost:8080/api/subcategory/:subcategory/`
   }
 };
 

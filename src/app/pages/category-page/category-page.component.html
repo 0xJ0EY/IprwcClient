@@ -1,1 +1,13 @@
 <app-header></app-header>
+
+<div *ngIf="isLoaded()" class="container">
+  <div class="row">
+    <div class="banner w-100">
+      <span>
+        {{ subcategory.name }}
+      </span>
+    </div>
+
+    <app-product-grid [products]="subcategory.products"></app-product-grid>
+  </div>
+</div>

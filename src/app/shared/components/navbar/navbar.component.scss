@@ -3,6 +3,8 @@
   color: #fff;
   padding: 0;
 
+  box-shadow: 0 0 10px rgba(23,38,47,.3);
+
   span {
     margin-right: 20px;
     padding: 10px 0;
@@ -23,6 +25,8 @@
   height: 300px;
 
 
+  z-index: 100;
+
   top: 100%;
   left: 0;
   right: 0;
@@ -41,10 +45,8 @@
   -webkit-column-count: 3;
   column-count: 3;
 
-  --moz-column-fill: balance;
-  column-fill: balance;
-
-
+  --moz-column-fill: auto;
+  column-fill: auto;
 
   .list-item {
     h3 {
