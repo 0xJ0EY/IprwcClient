@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProductComponent {
 
   @Input() public product: Product;
-  @Input() public rotationMultiplier = 5.5;
+  @Input() public rotationMultiplier = 8;
   @ViewChild('productCard') public productCard: ElementRef;
 
   private rotateX = 0;

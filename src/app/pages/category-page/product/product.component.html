@@ -1,6 +1,12 @@
 <div class="product-card" #productCard>
   <div class="inner">
-    <span class="name">{{ product.name }}</span>
+    <div class="card-top">
+      <span class="name">{{ product.name }}</span>
+    </div>
+
+    <div class="card-center">
+      <span class="brand">{{ product.brand.name }}</span>
+    </div>
 
     <div class="card-bottom">
       <button (click)="onClickAddToCart()">In winkelmandje</button>

@@ -22,6 +22,8 @@
 
   .inner {
     position: absolute;
+    display: flex;
+    flex-flow: column;
     top: 0;
     bottom: 0;
     left: 0;
@@ -41,6 +43,41 @@
     transition: transform .25s ease,box-shadow .25s ease,-webkit-transform .25s ease;
 
     box-shadow: 0 0 0 rgba(23,38,47,.3),inset 0 0 0 1px #d7e5f4;
+
+    .card-top {
+      width: 100%;
+      display: block;
+    }
+
+    .card-center {
+      height: 50%;
+      display: block;
+      position: relative;
+
+      margin: 0 -16%;
+
+      .brand {
+        position: absolute;
+        top: -10%;
+        left: 8%;
+
+        font-weight: 700;
+
+        color: rgba(0, 144, 248, 0.3);
+
+        font-size: 38px;
+        text-transform: uppercase;
+
+        transform-origin: 0 0;
+        transform: rotate(-90deg) translateX(-100%);
+      }
+    }
+
+    .card-bottom {
+
+    }
+
+
   }
 
   &::before {
