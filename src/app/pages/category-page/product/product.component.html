@@ -1,14 +1,21 @@
 <div class="product-card" #productCard>
   <div class="inner">
     <div class="card-top">
-      <span class="name">{{ product.name }}</span>
+      <a class="name" href="#">{{ product.name }}</a>
     </div>
 
     <div class="card-center">
       <span class="brand">{{ product.brand.name }}</span>
+      <a href="#">
+        <img src="https://servermall.ru/upload/resize_cache/iblock/3c4/720_480_1/Dell_R230_hdd_4.png" alt="">
+      </a>
     </div>
 
     <div class="card-bottom">
+      <span class="price">{{ product.priceWithoutVat }}</span>
+      <span class="vat">{{ product.vat }}</span>
+      <span class="price-vat">{{ product.price }}</span>
+
       <button (click)="onClickAddToCart()">In winkelmandje</button>
     </div>
   </div>

@@ -31,6 +31,8 @@
     padding: 12%;
     background-color: var(--fill-colour);
 
+    overflow: hidden;
+
     -webkit-transform: rotateX(0deg) rotateY(0deg);
     transform: rotateX(0deg) rotateY(0deg);
 
@@ -47,10 +49,15 @@
     .card-top {
       width: 100%;
       display: block;
+
+      a {
+        color: #000;
+        text-decoration: none;
+      }
     }
 
     .card-center {
-      height: 50%;
+      height: 70%;
       display: block;
       position: relative;
 
@@ -71,6 +78,31 @@
         transform-origin: 0 0;
         transform: rotate(-90deg) translateX(-100%);
       }
+
+      img {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+
+        transform: translate3d(-50%, -50%, 0);
+        width: 110%;
+
+        z-index: 4;
+      }
+
+      .image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+
+        height: 100%;
+
+        padding: 0 12%;
+
+        transform: translateZ(0);
+      }
+
     }
 
     .card-bottom {
