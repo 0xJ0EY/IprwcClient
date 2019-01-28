@@ -12,11 +12,16 @@
     </div>
 
     <div class="card-bottom">
-      <span class="price">{{ product.priceWithoutVat }}</span>
-      <span class="vat">{{ product.vat }}</span>
-      <span class="price-vat">{{ product.price }}</span>
+      <div class="row">
+        <span class="price">&euro;{{ product.priceWithoutVat }}</span>
+        <span class="vat">BTW {{ product.vat }}%</span>
+      </div>
 
-      <button (click)="onClickAddToCart()">In winkelmandje</button>
+      <span class="price-vat">&euro;{{ product.price }}</span>
+
+      <div class="add-to-cart">
+        <button (click)="onClickAddToCart()">In winkelmandje</button>
+      </div>
     </div>
   </div>
 </div>
