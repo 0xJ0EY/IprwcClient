@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CartItemModel } from '../models/cart-item.model';
+import { CartItem } from '../models/cart.item';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Product } from '../models/product.model';
 
@@ -8,13 +8,13 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
 
-  private _items: BehaviorSubject<Map<string, CartItemModel>> = new BehaviorSubject(new Map<string, CartItemModel>());
+  private _items: BehaviorSubject<Map<string, CartItem>> = new BehaviorSubject(new Map<string, CartItem>());
 
   constructor() {
     this.loadFromDisk();
   }
 
-  get items(): Subject<Map<string, CartItemModel>> {
+  get items(): Subject<Map<string, CartItem>> {
     return this._items;
   }
 
@@ -28,7 +28,7 @@ export class CartService {
       return this.incrementAmount(product, amount);
     }
 
-    const item = new CartItemModel(product, amount);
+    const item = new CartItem(product, amount);
     items.set(product.title, item);
 
     this._items.next(items);
@@ -95,7 +95,7 @@ export class CartService {
   }
 
   public clearCart(): void {
-    this._items.next(new Map<string, CartItemModel>());
+    this._items.next(new Map<string, CartItem>());
     this.saveToDisk();
   }
 
@@ -105,10 +105,10 @@ export class CartService {
   }
 
   private loadFromDisk(): void {
-    let items = <Map<string, CartItemModel>> new Map(JSON.parse(localStorage.getItem('cart')));
+    let items = <Map<string, CartItem>> new Map(JSON.parse(localStorage.getItem('cart')));
 
     if (items == null) {
-      items = new Map<string, CartItemModel>();
+      items = new Map<string, CartItem>();
     }
 
     this.items.next(items);

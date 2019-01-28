@@ -1,6 +1,6 @@
 import { Product } from './product.model';
 
-export class CartItemModel {
+export class CartItem {
 
     public item: Product;
     public amount: number;

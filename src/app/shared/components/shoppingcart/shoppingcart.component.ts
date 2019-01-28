@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
-import { CartItemModel } from '../../models/cart-item.model';
+import { CartItem } from '../../models/cart.item';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
@@ -35,7 +35,7 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
   active = false;
 
   // Current items in the cart
-  items: Array<CartItemModel>;
+  items: Array<CartItem>;
 
   // Amount of items in the cart
   amount: number;
@@ -66,32 +66,20 @@ export class ShoppingcartComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // TODO: Delegate this to the product
-  public onClick(evt) {
-    const product = new Product();
-
-    const products = ['AMD Threadripper', 'VEGA 64', 'Nvidia 2080 ti'];
-
-    product.id = this.items.length;
-    product.name = products[product.id % products.length];
-
-    this.cart.addItem(product, 1);
-  }
-
   @HostListener('document:click', ['$event'])
   public onClickOutsideComponent(evt) {
     this.active = this.elementRef.nativeElement.contains(evt.target);
   }
 
-  public onClickIncrement(product: CartItemModel) {
+  public onClickIncrement(product: CartItem) {
     this.cart.incrementAmount(product.item, 1);
   }
 
-  public onClickDecrement(product: CartItemModel) {
+  public onClickDecrement(product: CartItem) {
     this.cart.decrementAmount(product.item, 1);
   }
 
-  public onClickDelete(product: CartItemModel) {
+  public onClickDelete(product: CartItem) {
     this.cart.deleteItem(product.item);
   }
 

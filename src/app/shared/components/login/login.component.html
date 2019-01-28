@@ -1,0 +1,47 @@
+<div class="login" [ngClass]="{'active': active}">
+  <div class="login-container">
+    <span *ngIf="user === null">Inloggen</span>
+    <span *ngIf="user !== null">{{ user.username | titlecase }}</span>
+  </div>
+
+  <div [@openClose]="active ? 'open' : 'closed'" class="dropdown"
+       [ngClass]="{'active': active, 'error': errorMessage.length > 0}">
+
+    <div class="loading" *ngIf="loading">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="user === null; else loggedIn">
+      <form class="p-3 login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Gebruikersnaam</label>
+          <input type="text" class="form-control" id="username"
+                 formControlName="username"
+                 required
+                 #username>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Wachtwoord</label>
+          <input type="password" class="form-control" id="password"
+                 formControlName="password"
+                 required
+                 #password>
+        </div>
+
+        <span class="error-message">{{ errorMessage }}</span>
+
+        <div class="footer">
+          <button type="submit" class="btn btn-primary float-right" [disabled]="!loginForm.valid">Inloggen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #loggedIn>
+  <button (click)="logout()" class="btn btn-primary">Log uit</button>
+</ng-template>
+

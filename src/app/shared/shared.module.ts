@@ -5,16 +5,21 @@ import {HeaderComponent} from './components/header/header.component';
 import {CategoryService} from './services/category.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {RouterModule} from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ShoppingcartComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

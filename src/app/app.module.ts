@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
+import {AuthenticationService} from './shared/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     PagesModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

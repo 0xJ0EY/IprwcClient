@@ -1,0 +1,115 @@
+.login {
+  display: block;
+  position: relative;
+  z-index: 100;
+
+  .login-container {
+    padding: 5px 10px;
+    cursor: pointer;
+
+    background-color: #fff;
+    z-index: 100;
+
+    border-radius: 3px 3px 0 0;
+
+    &:hover {
+      background-color: darken(#fff, 5);
+    }
+  }
+
+  &.active {
+    .login-container {
+      background-color: var(--accent-colour);
+      color: var(--fill-colour);
+    }
+  }
+
+  .dropdown {
+    right: 0;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    background-color: #fff;
+    overflow: hidden;
+
+    border-radius: 3px 0 3px 3px;
+
+    z-index: 99;
+
+    &.active {
+      -webkit-box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+      -moz-box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+      box-shadow: 0px 1px 4px 0px rgba(212,212,212,1);
+    }
+  }
+
+  .login-form {
+    label {
+      line-height: 1.5em;
+      font-weight: 500;
+      margin-bottom: 0.2rem !important;
+      font-size: 20px;
+      color: var(--accent-colour);
+    }
+
+    .invalid,
+    .ng-dirty.ng-invalid:not(form) {
+      background-color: lighten(#ff4330, 5);
+      border-color: darken(#ff4330, 20);
+      box-shadow: 0 0 0 .2rem lighten(#ff4330, 20);
+    }
+
+    .error-message {
+      color: var(--error-colour);
+    }
+
+    .btn-primary {
+      -webkit-transition: background-color 100ms ease-in-out, border 100ms ease-in-out;
+      -moz-transition: background-color 100ms ease-in-out, border 100ms ease-in-out;
+      -ms-transition: background-color 100ms ease-in-out, border 100ms ease-in-out;
+      -o-transition: background-color 100ms ease-in-out, border 100ms ease-in-out;
+      transition: background-color 100ms ease-in-out, border 100ms ease-in-out;
+
+      border-bottom: 2px solid #0090F8;
+
+      &:hover {
+        background-color: darken(#0090F8, 15);
+        border-bottom: 2px solid darken(#0090F8, 25);
+      }
+    }
+  }
+
+
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(50, 50, 50, 0.25);
+
+    z-index: 10;
+  }
+
+  .footer {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    display: block;
+    padding: 1rem;
+  }
+
+}
+
+.dropdown.active.error {
+  height: 280px !important;
+}
