@@ -1,0 +1,23 @@
+@import "~bootstrap/scss/bootstrap-grid";
+
+.input-group {
+
+}
+
+
+@include media-breakpoint-down(sm) {
+
+
+  .input-group {
+
+    input {
+      border-radius: 0.25rem;
+      width: 150px;
+    }
+
+    .input-group-append .btn {
+      display: none !important;
+    }
+  }
+
+}

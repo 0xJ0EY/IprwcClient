@@ -1,0 +1,7 @@
+<div class="input-group">
+  <input type="text" name="search" #search (keyup.enter)="onSearch(search.value)" placeholder="Zoeken" class="form-control">
+
+  <div class="input-group-append">
+    <button (click)="onSearch(search.value)" class="btn btn-primary">Zoeken</button>
+  </div>
+</div>

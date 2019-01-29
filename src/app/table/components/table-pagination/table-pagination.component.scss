@@ -1,0 +1,28 @@
+@import "~bootstrap/scss/bootstrap-grid";
+
+.information {
+  float: left;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 12px;
+
+  color: #fff;
+
+  @include media-breakpoint-down(sm) {
+    /* Not the most critical data, so just hide it */
+    display: none;
+  }
+}
+
+.pagination {
+  float: right;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding-right: 12px;
+}

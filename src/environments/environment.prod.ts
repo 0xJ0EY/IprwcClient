@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  api: '/api/',
 
   routes: {
     auth: {

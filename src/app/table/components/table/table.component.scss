@@ -1,0 +1,160 @@
+
+:host {
+  width: 100%;
+  height: 650px;
+}
+
+.table-container {
+  height: 100%;
+  width: 100%;
+}
+
+
+.table {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  position: relative;
+  box-sizing: content-box;
+
+  border: 1px solid #d7e5f4;
+}
+
+.table-header {
+
+  height: 50px;
+
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  position: absolute;
+
+  z-index: 10;
+  background-color: #fff;
+
+  .title {
+    float: left;
+    line-height: 50px;
+    padding-left: 12px;
+  }
+
+  .search {
+    float: right;
+    height: 100%;
+
+    padding-right: 12px;
+
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+.table-content {
+  padding-top: 50px;
+  max-height: calc(100% - 50px);
+
+  overflow: auto;
+
+  padding-bottom: 0;
+  height: 100%;
+
+  background-color: #fff;
+
+  &.pdf_content {
+    overflow: hidden !important;
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      background-color: var(--tertiary-colour);
+      color: #fff;
+
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 50px;
+
+  background-color: var(--tertiary-colour);
+}
+
+.loading-container {
+  width: 100%;
+  height: calc(100% - 100px);
+
+  position: absolute;
+  background-color: #fff;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    //width: 100px;
+    //height: 100px;
+
+    -webkit-animation: rotateAlbert 1.5s linear infinite both;
+    animation: rotateAlbert 1.5s linear infinite both;
+  }
+}
+
+.pdf_rendering {
+  width: 1920px !important;
+}
+
+@-webkit-keyframes rotateAlbert {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateAlbert {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+.buttons {
+  height: 50px;
+
+  .btn {
+    background-color: var(--accent-colour);
+    color: #fff;
+
+    &:hover {
+      background-color: darken(#edca1b, 10);
+    }
+
+    margin-right: 10px;
+  }
+}
+
+.hidden {
+  opacity: 0;
+}

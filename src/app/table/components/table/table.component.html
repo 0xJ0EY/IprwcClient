@@ -1,0 +1,51 @@
+<div class="table-container">
+
+  <div class="buttons" *ngIf="buttons.length > 0 || tableButtons.length > 0">
+    <a class="btn btn-primary" *ngFor="let button of tableButtons" (click)="button.onClick()">{{ button.name }}</a>
+    <a class="btn btn-primary" *ngFor="let button of buttons" [routerLink]="button.route">{{ button.name }}</a>
+  </div>
+
+  <div class="table">
+
+    <!-- Header -->
+    <div class="table-content" [class.pdf_content]="renderingPdf">
+      <div class="table-header">
+        <h3 class="title m-0">{{ title }}</h3>
+        <div class="search">
+          <ng-template #appTableSearch></ng-template>
+        </div>
+      </div>
+
+      <div class="loading-container" *ngIf="loading === true">
+
+        <ng-template [ngIf]="isDevelopment === true">
+          <img src="/assets/images/max.png" alt="loading">
+        </ng-template>
+
+        <ng-template [ngIf]="isDevelopment === false">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </ng-template>
+      </div>
+
+      <!--  Cant use an ng if because of the ng-template, so just hide the table for now ... -->
+      <table id="pdf-table" #appTablePdf [class.pdf_rendering]="renderingPdf">
+        <tr class="header">
+          <th *ngFor="let item of header">{{ item.name }}</th>
+        </tr>
+
+        <tr *ngIf="pageData.hasData === false">
+          <td colspan="100%">Geen data gevonden</td>
+        </tr>
+
+        <ng-template #appTableResults></ng-template>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" [class.hidden]="renderingPdf">
+      <ng-template #appTablePagination></ng-template>
+    </div>
+  </div>
+</div>

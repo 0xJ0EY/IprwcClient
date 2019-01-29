@@ -1,0 +1,9 @@
+<div class="information">
+  <span>{{ information }}</span>
+</div>
+
+<ul class="pagination">
+  <li class="page-item" [ngClass]="{'active': page === selected}" *ngFor="let page of pages">
+    <a class="page-link" (click)="loadPage(page)">{{ page }}</a>
+  </li>
+</ul>
