@@ -36,15 +36,9 @@ export class AuthenticationService {
       const auth = new Auth();
       const user = <User> resp;
 
-
-      console.log(auth);
-      console.log(user);
-      console.log(resp);
-
       if (user !== null) {
         auth.user = user;
         auth.token = Auth.generateToken(username, password);
-
 
         localStorage.setItem('authenticated_user', JSON.stringify(auth));
         this.user.next(user);

@@ -7,13 +7,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {RouterModule} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ShoppingcartComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    AdminMenuComponent
   ],
   imports: [
     RouterModule,
@@ -23,8 +25,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   exports: [
     HeaderComponent,
-    ShoppingcartComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminMenuComponent
   ],
   providers: [
     CategoryService

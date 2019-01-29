@@ -1,0 +1,56 @@
+.menu {
+  height: 40px;
+  width: 100%;
+
+  left: 0;
+  top: 60px;
+
+  z-index: 110;
+
+  background-color: darken(#A7B9C9, 10);
+
+  .container {
+    height: 100%;
+
+
+    .list {
+      display: block;
+      list-style: none;
+
+      padding: 0;
+
+      height: 100%;
+
+      &.left li {
+        margin-right: 20px;
+      }
+
+      &.right li {
+        margin-left: 20px;
+      }
+
+      li {
+        height: 100%;
+        float: left;
+
+        a {
+          display: block;
+          height: 100%;
+          line-height: 40px;
+          text-decoration: none;
+
+          color: var(--fill-colour);
+
+          &:hover {
+            //background-color: var(--fill-colour);
+            color: var(--accent-colour);
+            border-bottom: 2px solid var(--accent-colour);
+          }
+
+        }
+      }
+
+
+    }
+  }
+}
