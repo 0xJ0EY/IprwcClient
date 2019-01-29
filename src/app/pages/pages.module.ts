@@ -4,11 +4,13 @@ import { IndexPageComponent } from './index-page/index-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { ShoppingcartPageComponent } from './shoppingcart-page/shoppingcart-page.component';
 import { CategoryPageModule } from './category-page/category-page.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     IndexPageComponent,
-    ShoppingcartPageComponent
+    ShoppingcartPageComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,

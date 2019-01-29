@@ -26,7 +26,7 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
   exports: [
     HeaderComponent,
     NavbarComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
   ],
   providers: [
     CategoryService

@@ -5,6 +5,7 @@ import {User} from '../models/user.model';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Auth} from '../models/auth.model';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class AuthenticationService {
 
   user: BehaviorSubject<User> = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {
     this.load();
   }
 
@@ -55,6 +59,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('authenticated_user');
     this.user.next(null);
+    this.router.navigate(['/']);
   }
 
 }
