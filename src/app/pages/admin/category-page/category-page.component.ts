@@ -4,6 +4,7 @@ import {SimpleTableDataStrategy} from '../../../table/stratagies/simple-table-da
 import {CategoryRowComponent} from './category-row/category-row.component';
 import {HttpClient} from '@angular/common/http';
 import TableHeader from '../../../table/models/table-header.model';
+import TableSettings from '../../../table/models/table-settings.model';
 
 @Component({
   selector: 'app-category-page',
@@ -13,17 +14,22 @@ import TableHeader from '../../../table/models/table-header.model';
 export class CategoryPageComponent implements OnInit {
 
   public data: TableDataInterface;
+  public settings: TableSettings;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.settings = new TableSettings();
+    this.settings.addEmptyRowBtn = true;
 
     this.data = new SimpleTableDataStrategy(
       'category',
       'Categorieën',
       CategoryRowComponent,
       [
-        new TableHeader('Naam', 'name', false, false)
+        new TableHeader('Naam', 'name', false, false),
+        new TableHeader('', '', false, false),
+        new TableHeader('', '', false, false)
       ],
       this.http
     );

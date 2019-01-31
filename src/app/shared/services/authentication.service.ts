@@ -12,7 +12,8 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
 
-  user: BehaviorSubject<User> = new BehaviorSubject(null);
+  private user: BehaviorSubject<User> = new BehaviorSubject(null);
+  private auth: BehaviorSubject<Auth> = new BehaviorSubject(null);
 
   constructor(
     private http: HttpClient,
@@ -27,6 +28,7 @@ export class AuthenticationService {
     }
 
     const auth: Auth = <Auth>JSON.parse(localStorage.getItem('authenticated_user'));
+    this.auth.next(auth);
     this.user.next(auth.user);
   }
 
@@ -46,19 +48,35 @@ export class AuthenticationService {
 
         localStorage.setItem('authenticated_user', JSON.stringify(auth));
         this.user.next(user);
+        this.auth.next(auth);
+
+        console.log(auth);
       }
 
       return user;
     }));
   }
 
-  get currentUser(): Observable<User> {
-    return <Observable<User>>this.user;
+  get currentAuth(): Auth {
+    return this.auth.value;
+  }
+
+  get currentAuthObservable(): Observable<Auth> {
+    return this.auth.asObservable();
+  }
+
+  get currentUser(): User {
+    return this.user.value;
+  }
+
+  get currentUserObservable(): Observable<User> {
+    return this.user.asObservable();
   }
 
   logout() {
     localStorage.removeItem('authenticated_user');
     this.user.next(null);
+    this.auth.next(null);
     this.router.navigate(['/']);
   }
 

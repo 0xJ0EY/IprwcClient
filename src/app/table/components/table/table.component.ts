@@ -34,7 +34,6 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public itemsPerPage = 15;
 
   private loadingData = true;
-  public renderingPdf = false;
   private renderingHtml = false;
 
   public title = '';
@@ -54,8 +53,6 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild('appTableSearch', {read: ViewContainerRef}) public searchView: ViewContainerRef;
   @ViewChild('appTableResults', {read: ViewContainerRef}) public resultView: ViewContainerRef;
   @ViewChild('appTablePagination', {read: ViewContainerRef}) public paginationView: ViewContainerRef;
-
-  @ViewChild('appTablePdf') public tablePdf: ElementRef;
 
   private rows: ComponentRef<TableRow>[] = [];
 
@@ -131,7 +128,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   get loading() {
-    return this.loadingData || this.renderingPdf || this.renderingHtml;
+    return this.loadingData || this.renderingHtml;
   }
 
   ////
@@ -256,7 +253,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
   public addTemporaryEmptyRow() {
     const data: TableData = this.filteredData;
-    data.data.push({ 'editable': true, 'new': true, 'dirty': true });
+    data.data.push({ 'editable': true, 'new': true, 'dirty': true, 'deleted': false });
     this.filteredData = data;
 
     // Rerender table

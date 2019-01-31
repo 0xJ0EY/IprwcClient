@@ -8,7 +8,7 @@
   <div class="table">
 
     <!-- Header -->
-    <div class="table-content" [class.pdf_content]="renderingPdf">
+    <div class="table-content">
       <div class="table-header">
         <h3 class="title m-0">{{ title }}</h3>
         <div class="search">
@@ -30,7 +30,7 @@
       </div>
 
       <!--  Cant use an ng if because of the ng-template, so just hide the table for now ... -->
-      <table id="pdf-table" #appTablePdf [class.pdf_rendering]="renderingPdf">
+      <table>
         <tr class="header">
           <th *ngFor="let item of header">{{ item.name }}</th>
         </tr>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer" [class.hidden]="renderingPdf">
+    <div class="footer">
       <ng-template #appTablePagination></ng-template>
     </div>
   </div>

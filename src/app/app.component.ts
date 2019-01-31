@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private auth: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.subscription = this.auth.currentUser.subscribe(user => this.user = user);
+    this.subscription = this.auth.currentUserObservable.subscribe(user => this.user = user);
   }
 
   ngOnDestroy(): void {

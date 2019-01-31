@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription = this.auth.currentUser.subscribe((user) => {
+    this.subscription = this.auth.currentUserObservable.subscribe((user) => {
       this.user = user;
     });
   }
