@@ -15,15 +15,15 @@ enum RowState { VIEW, EDIT, NEW, DELETED }
   template: `
     <ng-template [ngIf]="currentState === state.VIEW">
       <td>{{ data.name }}</td>
-      <td style="width: 20px"><span (click)="onClickEdit()">E</span></td>
-      <td style="width: 20px"><span (click)="onClickDelete()">D</span></td>
+      <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickEdit()">edit</i></td>
+      <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickDelete()">delete</i></td>
     </ng-template>
     <ng-template [ngIf]="currentState === state.EDIT || currentState === state.NEW">
       <td>
         <input class="form-control" type="text" [(ngModel)]="data.name" placeholder="Naam">
       </td>
-      <td style="width: 20px"><span (click)="onClickSave()">S</span></td>
-      <td style="width: 20px"><span (click)="onClickCancel()">C</span></td>
+      <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickSave()">save</i></td>
+      <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickCancel()">cancel</i></td>
     </ng-template>
     
     <ng-template #deleteModal let-modal>
@@ -53,7 +53,16 @@ enum RowState { VIEW, EDIT, NEW, DELETED }
       </div>
     </ng-template>
   `,
-  styles: ['tr {width: 100%; display: block;}','.form-control {width: 100%}']
+  styles: [`
+    i { 
+      cursor: pointer;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none; 
+    }
+  `]
 })
 /* tslint:enable */
 export class CategoryRowComponent implements TableRow, OnInit {
@@ -62,7 +71,7 @@ export class CategoryRowComponent implements TableRow, OnInit {
 
   // Reference for RowState
   state = RowState;
-  currentState: RowState;
+  private internalState: RowState = null;
 
   loading = true;
 
@@ -79,6 +88,7 @@ export class CategoryRowComponent implements TableRow, OnInit {
   }
 
   private get initialState(): RowState {
+    if (this.data.hasOwnProperty('state')) { return <RowState> this.data.state; }
     if (this.data.deleted) { return RowState.DELETED; }
     return this.data.editable ? RowState.EDIT : RowState.VIEW;
   }
@@ -93,9 +103,17 @@ export class CategoryRowComponent implements TableRow, OnInit {
     });
   }
 
+  public get currentState(): RowState {
+    return this.internalState;
+  }
+
+  public set currentState(state: RowState) {
+    this.internalState = state;
+    this.data.state = state;
+  }
+
   public onClickEdit() {
     this.currentState = RowState.EDIT;
-
   }
 
   public onClickDelete() {
@@ -111,7 +129,7 @@ export class CategoryRowComponent implements TableRow, OnInit {
 
   public onClickCancel() {
     // Save it in the table, because this component get re-rendered every table update and the local variables will be purged.
-    this.data.deleted = true;
+    if (this.data.new) { this.data.deleted = true; }
     this.currentState = this.data.new ? RowState.DELETED : RowState.VIEW;
   }
 
@@ -124,9 +142,9 @@ export class CategoryRowComponent implements TableRow, OnInit {
       this.categoryService.update(this.data);
 
     callback.subscribe((category) => {
+      this.currentState = RowState.VIEW;
       this.data = category;
       this.loading = false;
-      this.currentState = RowState.VIEW;
     });
 
   }
