@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Auth} from '../models/auth.model';
 import {Router} from '@angular/router';
+import {apiRoutes} from '../../../environments/api-routes';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class AuthenticationService {
     body.append('username', username);
     body.append('password', password);
 
-    return this.http.post<User>(environment.routes.auth.login, body).pipe(map(resp => {
+    return this.http.post<User>(environment.api + apiRoutes.auth.login, body).pipe(map(resp => {
       const auth = new Auth();
       const user = <User> resp;
 

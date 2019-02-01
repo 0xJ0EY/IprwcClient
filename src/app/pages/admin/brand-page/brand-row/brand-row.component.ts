@@ -2,33 +2,24 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {TableRow} from '../../../../table/interfaces/table-row.interface';
 import {TableComponent} from '../../../../table/components/table/table.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {CategoryService} from '../../../../shared/services/category.service';
 import {Observable} from 'rxjs';
 import Category from '../../../../shared/models/category.model';
-import {SubcategoryService} from '../../../../shared/services/subcategory.service';
-import Subcategory from '../../../../shared/models/subcategory.model';
+import {BrandService} from '../../../../shared/services/brand.service';
+import Brand from '../../../../shared/models/brand.model';
 
 
 enum RowState { VIEW, EDIT, NEW, DELETED }
 
 /* tslint:disable */
 @Component({
-  selector: 'tr[app-subcategory-row]',
+  selector: 'tr[app-brand-row]',
   template: `
     <ng-template [ngIf]="currentState === state.VIEW">
-      <td>{{ data.category?.name }}</td>
       <td>{{ data.name }}</td>
       <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickEdit()">edit</i></td>
       <td style="width: 20px" class="align-middle"><i class="material-icons" (click)="onClickDelete()">delete</i></td>
     </ng-template>
     <ng-template [ngIf]="currentState === state.EDIT || currentState === state.NEW">
-      <td>
-        <select class="form-control" [(ngModel)]="this.data.category" [compareWith]="compareComponents" [disabled]="loading">
-          <option *ngFor="let category of categories" [ngValue]="category">
-            {{ category.name }}
-          </option>
-        </select>
-      </td>
       <td>
         <input class="form-control" type="text" [(ngModel)]="data.name" placeholder="Naam" [disabled]="loading">
       </td>
@@ -75,7 +66,7 @@ enum RowState { VIEW, EDIT, NEW, DELETED }
   `]
 })
 /* tslint:enable */
-export class SubcategoryRowComponent implements TableRow, OnInit {
+export class BrandRowComponent implements TableRow, OnInit {
   data: any;
   table: TableComponent;
 
@@ -91,8 +82,7 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private categoryService: CategoryService,
-    private subcategoryService: SubcategoryService
+    private brandService: BrandService
   ) { }
 
   ngOnInit() {
@@ -112,7 +102,6 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
       switch (result) {
         case 'delete': this.onClickDeleteConfirm();
       }
-
     });
   }
 
@@ -123,20 +112,6 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
   public set currentState(state: RowState) {
     this.internalState = state;
     this.data.state = state;
-
-    switch (state) {
-      case RowState.EDIT:
-        this.loading = true;
-
-        this.categoryService.fetchAll().subscribe((response) => {
-          this.categories = response;
-          this.data.category = this.categories.length > 0 ? this.categories[0] : null;
-          this.loading = false;
-        });
-
-        break;
-    }
-
   }
 
   public onClickEdit() {
@@ -149,7 +124,7 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
   }
 
   public onClickDeleteConfirm() {
-    this.subcategoryService.delete(this.data.id).subscribe(() => {
+    this.brandService.delete(this.data.id).subscribe(() => {
       this.data.deleted = true;
       this.currentState = RowState.DELETED;
     });
@@ -167,9 +142,12 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
     // Check if it is new
     this.loading = true;
 
-    const callback: Observable<Subcategory> = this.data.new ?
-      this.subcategoryService.create(this.data) :
-      this.subcategoryService.update(this.data);
+    const callback: Observable<Brand> = this.data.new ?
+      this.brandService.create(this.data) :
+      this.brandService.update(this.data);
+
+    console.log(callback);
+    console.log(this.brandService);
 
     callback.subscribe((category) => {
       this.currentState = RowState.VIEW;
@@ -178,9 +156,4 @@ export class SubcategoryRowComponent implements TableRow, OnInit {
     });
 
   }
-
-  public compareComponents(c1: Category, c2: Category) {
-    return c1 && c2 && c1.id === c2.id;
-  }
-
 }

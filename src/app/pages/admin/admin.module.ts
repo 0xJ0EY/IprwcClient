@@ -9,9 +9,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
 import { SubcategoryRowComponent } from './subcategory-page/subcategory-row/subcategory-row.component';
+import { BrandPageComponent } from './brand-page/brand-page.component';
+import { BrandRowComponent } from './brand-page/brand-row/brand-row.component';
 
 @NgModule({
-  declarations: [CategoryPageComponent, CategoryRowComponent, SubcategoryPageComponent, SubcategoryRowComponent],
+  declarations: [
+    CategoryPageComponent,
+    CategoryRowComponent,
+    SubcategoryPageComponent,
+    SubcategoryRowComponent,
+    BrandPageComponent,
+    BrandRowComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -22,7 +31,8 @@ import { SubcategoryRowComponent } from './subcategory-page/subcategory-row/subc
   ],
   entryComponents: [
     CategoryRowComponent,
-    SubcategoryRowComponent
+    SubcategoryRowComponent,
+    BrandRowComponent
   ]
 })
 export class AdminModule { }

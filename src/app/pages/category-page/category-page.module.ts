@@ -19,6 +19,6 @@ import { ProductGridComponent } from './product-grid/product-grid.component';
   exports: [
     CategoryPageComponent
   ],
-  providers: [SubcategoryService]
+  providers: []
 })
 export class CategoryPageModule { }

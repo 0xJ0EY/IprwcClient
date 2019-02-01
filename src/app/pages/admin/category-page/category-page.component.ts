@@ -23,7 +23,7 @@ export class CategoryPageComponent implements OnInit {
     this.settings.addEmptyRowBtn = true;
 
     this.data = new SimpleTableDataStrategy(
-      'category',
+      'categories',
       'Categorieën',
       CategoryRowComponent,
       [

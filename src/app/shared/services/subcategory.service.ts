@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {Service} from './base.service';
 import {CategoryService} from './category.service';
 import {tap} from 'rxjs/operators';
+import {apiRoutes} from '../../../environments/api-routes';
 
 @Injectable({
   providedIn: 'root'
@@ -18,27 +19,27 @@ export class SubcategoryService implements Service<Subcategory> {
   ) { }
 
   fetchAll(): Observable<Subcategory[]> {
-    return this.http.get<Subcategory[]>(environment.routes.subcategories);
+    return this.http.get<Subcategory[]>(environment.api + apiRoutes.subcategories);
   }
 
   fetch(key: any): Observable<Subcategory> {
-    return this.http.get<Subcategory>(environment.routes.subcategories + '/' + key);
+    return this.http.get<Subcategory>(environment.api + apiRoutes.subcategories + '/' + key);
   }
 
   create(obj: Subcategory): Observable<Subcategory> {
-    return this.http.post<Subcategory>(environment.routes.subcategories, obj).pipe(tap(() => {
+    return this.http.post<Subcategory>(environment.api + apiRoutes.subcategories, obj).pipe(tap(() => {
       this.categoryService.updateCategories();
     }));
   }
 
   update(obj: Subcategory): Observable<Subcategory> {
-    return this.http.put<Subcategory>(environment.routes.subcategories, obj).pipe(tap(() => {
+    return this.http.put<Subcategory>(environment.api + apiRoutes.subcategories, obj).pipe(tap(() => {
       this.categoryService.updateCategories();
     }));
   }
 
   delete(key: any): Observable<Object> {
-    return this.http.delete<Subcategory>(environment.routes.subcategories).pipe(tap(() => {
+    return this.http.delete<Subcategory>(environment.api + apiRoutes.subcategories).pipe(tap(() => {
       this.categoryService.updateCategories();
     }));
   }

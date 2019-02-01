@@ -4,14 +4,14 @@ import TableSettings from '../../../table/models/table-settings.model';
 import {HttpClient} from '@angular/common/http';
 import {SimpleTableDataStrategy} from '../../../table/stratagies/simple-table-data.strategy';
 import TableHeader from '../../../table/models/table-header.model';
-import {SubcategoryRowComponent} from './subcategory-row/subcategory-row.component';
+import {BrandRowComponent} from './brand-row/brand-row.component';
 
 @Component({
-  selector: 'app-subcategory-page',
-  templateUrl: './subcategory-page.component.html',
-  styleUrls: ['./subcategory-page.component.scss']
+  selector: 'app-brand-page',
+  templateUrl: './brand-page.component.html',
+  styleUrls: ['./brand-page.component.scss']
 })
-export class SubcategoryPageComponent implements OnInit {
+export class BrandPageComponent implements OnInit {
 
   public data: TableDataInterface;
   public settings: TableSettings;
@@ -23,11 +23,10 @@ export class SubcategoryPageComponent implements OnInit {
     this.settings.addEmptyRowBtn = true;
 
     this.data = new SimpleTableDataStrategy(
-      'subcategories',
-      'Subcategorieën',
-      SubcategoryRowComponent,
+      'brands',
+      'Merken',
+      BrandRowComponent,
       [
-        new TableHeader('Categorie', 'name', false, false),
         new TableHeader('Naam', 'name', false, false),
         new TableHeader('', '', false, false),
         new TableHeader('', '', false, false)

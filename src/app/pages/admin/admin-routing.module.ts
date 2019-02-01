@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CategoryPageComponent} from './category-page/category-page.component';
 import {SubcategoryPageComponent} from './subcategory-page/subcategory-page.component';
+import {BrandPageComponent} from './brand-page/brand-page.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'subcategorie',
     component: SubcategoryPageComponent
+  },
+  {
+    path: 'merken',
+    component: BrandPageComponent
   },
   {
     path: 'producten',
