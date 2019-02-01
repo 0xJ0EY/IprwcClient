@@ -7,9 +7,11 @@ import { CategoryRowComponent } from './category-page/category-row/category-row.
 import {TableModule} from '../../table/table.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.component';
+import { SubcategoryRowComponent } from './subcategory-page/subcategory-row/subcategory-row.component';
 
 @NgModule({
-  declarations: [CategoryPageComponent, CategoryRowComponent],
+  declarations: [CategoryPageComponent, CategoryRowComponent, SubcategoryPageComponent, SubcategoryRowComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -19,7 +21,8 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModalModule
   ],
   entryComponents: [
-    CategoryRowComponent
+    CategoryRowComponent,
+    SubcategoryRowComponent
   ]
 })
 export class AdminModule { }

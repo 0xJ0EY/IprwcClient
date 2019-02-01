@@ -11,7 +11,7 @@ export const environment = {
       login: 'http://localhost:8080/api/auth/login'
     },
     categories: 'http://localhost:8080/api/category',
-    subcategories: 'http://localhost:8080/api/subcategory/:subcategory'
+    subcategories: 'http://localhost:8080/api/subcategory'
   }
 };
 

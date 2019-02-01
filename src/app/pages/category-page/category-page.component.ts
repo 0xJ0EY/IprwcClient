@@ -30,7 +30,7 @@ export class CategoryPageComponent implements OnInit, OnDestroy {
   }
 
   private fetchData(subcategory: string): void {
-    this.subcategoryService.fetchSubcategory(subcategory)
+    this.subcategoryService.fetch(subcategory)
       .subscribe(data => {
         this.subcategory = data;
         this.loading = false;

@@ -16,7 +16,7 @@ export class CategoryService implements Service<Category> {
     this.updateCategories();
   }
 
-  public get categories(): Subject<Category[]> {
+  public get categories(): BehaviorSubject<Category[]> {
     return this.subject;
   }
 
@@ -25,7 +25,7 @@ export class CategoryService implements Service<Category> {
   }
 
   fetch(key: any): Observable<Category> {
-    return this.http.get<Category>(environment.routes.categories + '/' + key);
+    return this.http.get<Category>(environment.routes.categories + key);
   }
 
   create(obj: Category): Observable<Category> {
@@ -46,7 +46,7 @@ export class CategoryService implements Service<Category> {
     }));
   }
 
-  private updateCategories() {
+  public updateCategories() {
     this.fetchAll().subscribe(data => {
 
       data.sort((a: Category, b: Category) => {
