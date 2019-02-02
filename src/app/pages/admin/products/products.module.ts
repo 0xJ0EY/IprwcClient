@@ -9,13 +9,15 @@ import { ProductEditPageComponent } from './product-edit-page/product-edit-page.
 import { ProductAddPageComponent } from './product-add-page/product-add-page.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProductImagesUploadComponent } from './product-images-upload/product-images-upload.component';
 
 @NgModule({
   declarations: [
     ProductOverviewPageComponent,
     ProductOverviewRowComponent,
     ProductEditPageComponent,
-    ProductAddPageComponent
+    ProductAddPageComponent,
+    ProductImagesUploadComponent
   ],
   imports: [
     CommonModule,

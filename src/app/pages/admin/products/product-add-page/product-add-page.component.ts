@@ -58,7 +58,7 @@ export class ProductAddPageComponent implements OnInit {
 
     this.productService.create(this.product).subscribe((resp) => {
       this.router.navigate(['/admin/producten']);
-    });
+    }, () => { this.loading = false ; });
   }
 
   public compareSubcategories(s1: Subcategory, s2: Subcategory) {

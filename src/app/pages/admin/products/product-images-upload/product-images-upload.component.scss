@@ -1,0 +1,17 @@
+.image-container {
+  display: block;
+
+  .row {
+    margin: 0;
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    //height: 100%;
+  }
+}

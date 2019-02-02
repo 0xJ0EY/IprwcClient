@@ -1,0 +1,36 @@
+<div class="form-group">
+  <label for="file">Afbeelding</label>
+  <div class="custom-file">
+    <input type="file"
+           class="custom-file-input"
+           id="file"
+           accept="image/*"
+           (change)="changeFile($event)" #fileupload>
+    <label class="custom-file-label" for="file">{{ file !== null ? file.name : 'Kies een bestand' }}</label>
+  </div>
+</div>
+
+<div class="form-group">
+  <input type="button"
+         class="btn btn-primary float-right"
+         (click)="onClickAdd()"
+         value="Voeg afbeelding toe"
+         [disabled]="file === null">
+
+  <div class="clearfix"></div>
+</div>
+
+<div class="row">
+
+  <div class="col-4 image-container" *ngFor="let image of value">
+    <!--{{ image | json }}-->
+
+    <div class="row">
+      <i class="material-icons" (click)="onClickDelete(image)">delete</i>
+    </div>
+
+    <img src="{{ image.content }}" alt="image">
+
+  </div>
+
+</div>

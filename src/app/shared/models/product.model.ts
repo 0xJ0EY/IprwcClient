@@ -1,5 +1,6 @@
 import Brand from './brand.model';
 import Subcategory from './subcategory.model';
+import ProductImage from './product-image.model';
 
 export class Product {
   id: number;
@@ -9,6 +10,8 @@ export class Product {
   brand: Brand = new Brand();
 
   subcategory: Subcategory = new Subcategory();
+  images: ProductImage[] = [];
+
   description: string;
 
   price: number;
