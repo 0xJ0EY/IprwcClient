@@ -6,8 +6,9 @@ import {CategoryService} from './services/category.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {RouterModule} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { SmallBannerComponent } from './components/small-banner/small-banner.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
     ShoppingcartComponent,
     NavbarComponent,
     LoginComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    SmallBannerComponent,
   ],
   imports: [
     RouterModule,
@@ -27,9 +29,10 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
     HeaderComponent,
     NavbarComponent,
     AdminMenuComponent,
+    SmallBannerComponent,
   ],
   providers: [
-    CategoryService
+    CategoryService,
   ]
 })
 export class SharedModule { }

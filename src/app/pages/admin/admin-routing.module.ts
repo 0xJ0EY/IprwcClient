@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {CategoryPageComponent} from './category-page/category-page.component';
 import {SubcategoryPageComponent} from './subcategory-page/subcategory-page.component';
 import {BrandPageComponent} from './brand-page/brand-page.component';
+import {AdminAuthenticationGuard} from '../../shared/guards/admin-authentication.guard';
 
 const routes: Routes = [
   {
@@ -19,8 +20,9 @@ const routes: Routes = [
   },
   {
     path: 'producten',
-    component: CategoryPageComponent
-  },
+    loadChildren: './products/products.module#ProductsModule',
+    canActivate: [AdminAuthenticationGuard]
+  }
 ];
 
 @NgModule({
