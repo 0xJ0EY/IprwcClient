@@ -7,7 +7,7 @@
     <div class="card-center">
       <span class="brand">{{ product.brand.name }}</span>
       <a href="#">
-        <img src="https://servermall.ru/upload/resize_cache/iblock/3c4/720_480_1/Dell_R230_hdd_4.png" alt="">
+        <ng-container *ngIf="product.images.length > 0; then image; else noImage"></ng-container>
       </a>
     </div>
 
@@ -25,3 +25,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #image>
+  <img src="{{ api }}{{ product.images[0].imageName }}" alt="">
+  
+</ng-template>
+
+<ng-template #noImage>
+  <img src="https://servermall.ru/upload/resize_cache/iblock/3c4/720_480_1/Dell_R230_hdd_4.png" alt="">
+</ng-template>

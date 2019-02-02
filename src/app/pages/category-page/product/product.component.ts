@@ -2,6 +2,7 @@ import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, ViewChi
 import { Product } from '../../../shared/models/product.model';
 import { CartService } from '../../../shared/services/cart.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +10,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
+
+  private api = environment.api;
 
   @Input() public product: Product;
   @Input() public rotationMultiplier = 8;
