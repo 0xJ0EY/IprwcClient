@@ -1,0 +1,44 @@
+.image-container {
+  white-space: nowrap;
+  width: 100%;
+  height: 380px;
+  display: block;
+
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  margin: 0 -50px;
+  padding: 0 50px;
+
+  box-sizing: content-box;
+
+}
+
+.description-container {
+  padding: 0;
+}
+
+.price-container {
+  padding: 0;
+}
+
+.inner {
+  padding: 20px;
+  background-color: var(--fill-colour);
+  border: 1px solid #d7e5f4;
+
+  .description {
+    white-space: pre-wrap;
+  }
+
+  .price-without-vat,
+  .vat {
+    display: block;
+    color: red;
+  }
+
+  .price {
+    display: block;
+  }
+}

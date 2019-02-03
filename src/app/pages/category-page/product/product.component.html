@@ -6,7 +6,7 @@
 
     <div class="card-center">
       <span class="brand">{{ product.brand.name }}</span>
-      <a href="#">
+      <a [routerLink]="['/product', product.title]">
         <ng-container *ngIf="product.images.length > 0; then image; else noImage"></ng-container>
       </a>
     </div>

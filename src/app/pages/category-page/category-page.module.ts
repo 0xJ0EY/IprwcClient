@@ -5,6 +5,7 @@ import {SubcategoryService} from '../../shared/services/subcategory.service';
 import {SharedModule} from '../../shared/shared.module';
 import { ProductComponent } from './product/product.component';
 import { ProductGridComponent } from './product-grid/product-grid.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProductGridComponent } from './product-grid/product-grid.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     CategoryPageComponent

@@ -9,6 +9,7 @@ import {OrderPageComponent} from './pages/order-page/order-page.component';
 import {MyOrdersPageComponent} from './pages/my-orders-page/my-orders-page.component';
 import {MyOrderDetailPageComponent} from './pages/my-orders-page/my-order-detail-page/my-order-detail-page.component';
 import {LoginPageComponent} from './pages/login-page/login-page.component';
+import {ProductDetailPageComponent} from './pages/product-detail-page/product-detail-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'categorie/:subcategory',
     component: CategoryPageComponent
+  },
+  {
+    path: 'product/:product',
+    component: ProductDetailPageComponent
   },
   {
     path: 'winkelwagen',

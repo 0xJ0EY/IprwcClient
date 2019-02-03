@@ -12,6 +12,8 @@ import { MyOrdersPageComponent } from './my-orders-page/my-orders-page.component
 import {TableModule} from '../table/table.module';
 import {MyOrdersRowComponent} from './my-orders-page/my-orders-row/my-orders-row.component';
 import { MyOrderDetailPageComponent } from './my-orders-page/my-order-detail-page/my-order-detail-page.component';
+import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+import { ProductImageComponent } from './product-detail-page/product-image/product-image.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MyOrderDetailPageComponent } from './my-orders-page/my-order-detail-pag
     OrderPageComponent,
     MyOrdersPageComponent,
     MyOrdersRowComponent,
-    MyOrderDetailPageComponent
+    MyOrderDetailPageComponent,
+    ProductDetailPageComponent,
+    ProductImageComponent
   ],
   imports: [
     CommonModule,

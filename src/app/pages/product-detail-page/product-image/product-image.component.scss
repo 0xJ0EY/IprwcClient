@@ -1,0 +1,50 @@
+:host {
+  display: inline-block;
+}
+
+.product-card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+
+  background-color: var(--fill-colour);
+
+  &:hover .inner {
+    -webkit-transform: rotateX(var(--mouse-x)) rotateY(var(--mouse-y));
+    transform: rotateX(var(--mouse-x)) rotateY(var(--mouse-y));
+
+    transition: box-shadow .25s ease,-webkit-transform 0s;
+    transition: transform 0s,box-shadow .25s ease;
+    transition: transform 0s,box-shadow .25s ease,-webkit-transform 0s;
+
+    box-shadow: 0 20px 40px rgba(23,38,47,.3),inset 0 0 0 1px #d7e5f4;
+
+    z-index: 6;
+  }
+
+  .inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    perspective: 1500px;
+
+    border: 1px solid #d7e5f4;
+
+    transition: box-shadow .25s ease,-webkit-transform .25s ease;
+    transition: transform .25s ease,box-shadow .25s ease;
+    transition: transform .25s ease,box-shadow .25s ease,-webkit-transform .25s ease;
+
+    img {
+      margin: -16%;
+      width: 130%;
+    }
+  }
+
+}
