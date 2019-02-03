@@ -1,0 +1,12 @@
+.content {
+  padding: 20px;
+  background-color: var(--fill-colour);
+  border: 1px solid #d7e5f4;
+
+  .image-container {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
