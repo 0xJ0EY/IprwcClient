@@ -63,4 +63,8 @@ export class ShoppingcartPageComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  public canOrder(): boolean {
+    return this.items.length > 0;
+  }
+
 }

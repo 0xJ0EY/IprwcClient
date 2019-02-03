@@ -1,3 +1,151 @@
-<p>
-  order-page works!
-</p>
+<div class="container">
+  <div class="row">
+    <app-small-banner [title]="'Bestellen'"></app-small-banner>
+
+
+    <div class="row w-100 m-0 containers">
+      <div class="products-container col-lg-6 col-12">
+        <div class="products">
+          <h1>Producten</h1>
+
+          <div class="cart-row row m-0" *ngFor="let cartItem of items">
+            <div class="col-2 image">
+              <ng-container *ngIf="cartItem.item.images.length > 0; else noImage">
+                <img src="{{ api }}{{ cartItem.item.images[0].imageName }}" alt="">
+              </ng-container>
+            </div>
+
+            <div class="col-4 product-name">
+              <h4>{{ cartItem.item.brand.name }}</h4>
+              <span>{{ cartItem.item.name }}</span>
+            </div>
+
+            <div class="col-2 form-group amount">
+              <span>x{{ cartItem.amount }}</span>
+            </div>
+
+            <div class="col-4 price">
+              {{ cartItem.item.price * cartItem.amount | currency: '&euro;' }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="order-container col-lg-6 col-12">
+        <div class="order">
+
+          <h1>Bestelling</h1>
+
+          <form #orderForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="firstname">Voornaam</label>
+              <input type="text"
+                     id="firstname"
+                     name="firstname"
+                     class="form-control"
+                     [(ngModel)]="order.firstname"
+                     #firstname="ngModel"
+                     [disabled]="loading"
+                     required
+              >
+            </div>
+
+            <div [hidden]="(firstname.valid || firstname.pristine) || loading" class="alert alert-danger">
+              Voornaam is verplicht
+            </div>
+
+            <div class="form-group">
+              <label for="lastname">Achternaam</label>
+              <input type="text"
+                     id="lastname"
+                     name="lastname"
+                     class="form-control"
+                     [(ngModel)]="order.lastname"
+                     [disabled]="loading"
+                     #lastname="ngModel"
+                     required
+              >
+            </div>
+
+            <div [hidden]="(lastname.valid || lastname.pristine) || loading" class="alert alert-danger">
+              Achternaam is verplicht
+            </div>
+
+            <div class="row">
+              <div class="col-7">
+                <div class="form-group">
+                  <label for="street">Straat</label>
+                  <input type="text"
+                         id="street"
+                         name="street"
+                         class="form-control"
+                         [(ngModel)]="order.street"
+                         [disabled]="loading"
+                         #street="ngModel"
+                         required
+                  >
+                </div>
+
+                <div [hidden]="(street.valid || street.pristine) || loading" class="alert alert-danger">
+                  Straat is verplicht
+                </div>
+              </div>
+
+              <div class="col-5">
+                <div class="form-group">
+                  <label for="housenumber">Huisnummer</label>
+                  <input type="text"
+                         id="housenumber"
+                         name="housenumber"
+                         class="form-control"
+                         [(ngModel)]="order.houseNumber"
+                         [disabled]="loading"
+                         #housenumber="ngModel"
+                         required
+                  >
+                </div>
+
+                <div [hidden]="(housenumber.valid || housenumber.pristine) || loading" class="alert alert-danger">
+                  Huisnummer is verplicht
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="postalcode">Postcode</label>
+              <input type="text"
+                     id="postalcode"
+                     name="postalcode"
+                     class="form-control"
+                     [(ngModel)]="order.postalCode"
+                     [disabled]="loading"
+                     #postalcode="ngModel"
+                     required
+              >
+            </div>
+
+            <div [hidden]="(postalcode.valid || postalcode.pristine) || loading" class="alert alert-danger">
+              Postcode is verplicht
+            </div>
+
+            <div class="form-group">
+              <input type="submit"
+                     class="btn btn-primary float-right"
+                     value="Bestellen">
+              <!--[disabled]="!orderForm.form.valid"-->
+            </div>
+
+            <div class="clearfix"></div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #noImage>
+  <img src="/assets/images/notfound.png" alt="">
+</ng-template>

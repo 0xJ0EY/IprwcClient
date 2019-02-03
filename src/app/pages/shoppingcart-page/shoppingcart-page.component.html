@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <app-banner [title]="'Winkelwagen'"></app-banner>
+    <app-small-banner [title]="'Winkelwagen'"></app-small-banner>
 
     <div class="cart-container col-lg-8 col-12">
       <div class="cart">
@@ -10,7 +10,7 @@
 
         <div class="cart-row row m-0" *ngFor="let cartItem of items">
           <div class="col-2 image">
-            <ng-container *ngIf="cartItem.item.images.length > 0; else noImage">
+            <ng-container *ngIf="cartItem.item.images?.length > 0; else noImage">
               <img src="{{ api }}{{ cartItem.item.images[0].imageName }}" alt="">
             </ng-container>
           </div>
@@ -62,7 +62,7 @@
         <div class="row">
           <div class="col-12">
             <div class="order-btn">
-              <a routerLink="/bestellen">Bestellen</a>
+              <a [routerLink]="canOrder() ? '/bestellen' : null" [class.disabled]="!canOrder()">Bestellen</a>
             </div>
           </div>
         </div>

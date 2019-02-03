@@ -5,5 +5,6 @@ export const apiRoutes = {
   categories: 'categories',
   subcategories: 'subcategories',
   brands: 'brands',
-  products: 'products'
+  products: 'products',
+  orders: 'orders',
 };
