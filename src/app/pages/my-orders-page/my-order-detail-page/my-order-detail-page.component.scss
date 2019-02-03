@@ -1,0 +1,39 @@
+.order-info {
+  display: block;
+  background-color: var(--fill-colour);
+
+  margin: 0 0 20px;
+  padding: 10px;
+
+  table {
+
+    tr {
+      padding: 10px 0;
+    }
+
+    th, td {
+      padding: 5px 20px;
+    }
+  }
+}
+
+.order-rows {
+  display: block;
+  background-color: var(--fill-colour);
+  padding: 10px;
+
+  table {
+    width: 100%;
+
+    th, td {
+      padding: 5px 20px;
+    }
+  }
+
+  .info span {
+    padding: 0 20px;
+    display: block;
+
+  }
+
+}

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <app-small-banner [title]="'Mijn bestellingen'"></app-small-banner>
+
+    <div class="row w-100 order-info">
+      <table>
+        <tr>
+          <th>Voornaam</th>
+          <td>{{ order.firstname }}</td>
+        </tr>
+        <tr>
+          <th>Achternaam</th>
+          <td>{{ order.lastname }}</td>
+        </tr>
+        <tr>
+          <th>Straat</th>
+          <td>{{ order.street }}</td>
+        </tr>
+        <tr>
+          <th>Huisnummer</th>
+          <td>{{ order.houseNumber }}</td>
+        </tr>
+        <tr>
+          <th>Postcode</th>
+          <td>{{ order.postalCode }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row m-0 w-100 order-rows">
+
+      <table>
+        <tr>
+          <th>Naam</th>
+          <th>Prijs</th>
+          <th>Aantal</th>
+        </tr>
+
+        <tr *ngFor="let item of order.items">
+          <td>{{ item.name }}</td>
+          <td class="price">{{ item.price | currency: '&euro;' }}</td>
+          <td class="amount">{{ item.amount }}</td>
+        </tr>
+      </table>
+
+      <div class="info">
+        <span><strong>Totaal aantal producten</strong>: {{ amount }}</span>
+        <span><strong>Totaal</strong>: {{ total | currency: '&euro;' }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

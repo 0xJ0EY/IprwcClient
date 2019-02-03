@@ -6,6 +6,8 @@ import {CategoryPageComponent} from './pages/category-page/category-page.compone
 import {AuthenticationGuard} from './shared/guards/authentication.guard';
 import {AdminAuthenticationGuard} from './shared/guards/admin-authentication.guard';
 import {OrderPageComponent} from './pages/order-page/order-page.component';
+import {MyOrdersPageComponent} from './pages/my-orders-page/my-orders-page.component';
+import {MyOrderDetailPageComponent} from './pages/my-orders-page/my-order-detail-page/my-order-detail-page.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,20 @@ const routes: Routes = [
     path: 'bestellen',
     component: OrderPageComponent,
     canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'bestellingen',
+    canActivate: [AuthenticationGuard],
+    children: [
+      {
+        path: '',
+        component: MyOrdersPageComponent
+      },
+      {
+        path: ':id',
+        component: MyOrderDetailPageComponent,
+      }
+    ]
   },
   {
     path: 'admin',
