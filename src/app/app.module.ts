@@ -9,6 +9,10 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import {AuthenticationService} from './shared/services/authentication.service';
 import {AuthenticationInterceptor} from './shared/interceptors/authentication.interceptor';
+import localeNl from '@angular/common/locales/nl';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localeNl);
 
 @NgModule({
   declarations: [

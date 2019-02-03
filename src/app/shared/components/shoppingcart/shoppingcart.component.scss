@@ -92,10 +92,19 @@
    }
 
   .cart {
-    width: 300px;
+    width: 350px;
 
     .cart-items {
       margin: 10px 20px;
+
+      table {
+        width: 100%;
+      }
+
+      td:last-child {
+        text-align: right;
+      }
+
     }
 
     strong {

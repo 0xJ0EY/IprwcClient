@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
 import { SmallBannerComponent } from './components/small-banner/small-banner.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SmallBannerComponent } from './components/small-banner/small-banner.com
     LoginComponent,
     AdminMenuComponent,
     SmallBannerComponent,
+    BannerComponent,
   ],
   imports: [
     RouterModule,
@@ -29,6 +31,7 @@ import { SmallBannerComponent } from './components/small-banner/small-banner.com
     HeaderComponent,
     NavbarComponent,
     AdminMenuComponent,
+    BannerComponent,
     SmallBannerComponent,
   ],
   providers: [

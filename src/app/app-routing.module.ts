@@ -5,6 +5,7 @@ import { ShoppingcartPageComponent } from './pages/shoppingcart-page/shoppingcar
 import {CategoryPageComponent} from './pages/category-page/category-page.component';
 import {AuthenticationGuard} from './shared/guards/authentication.guard';
 import {AdminAuthenticationGuard} from './shared/guards/admin-authentication.guard';
+import {OrderPageComponent} from './pages/order-page/order-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'winkelwagen',
     component: ShoppingcartPageComponent
+  },
+  {
+    path: 'bestellen',
+    component: OrderPageComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'admin',

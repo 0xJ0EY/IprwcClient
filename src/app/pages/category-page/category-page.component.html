@@ -1,10 +1,6 @@
 <div *ngIf="isLoaded()" class="container">
   <div class="row">
-    <div class="banner w-100">
-      <span>
-        {{ subcategory.name }}
-      </span>
-    </div>
+    <app-banner [title]="subcategory.name"></app-banner>
 
     <app-product-grid [products]="subcategory.products"></app-product-grid>
   </div>

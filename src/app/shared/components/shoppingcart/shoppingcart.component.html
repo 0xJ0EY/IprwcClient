@@ -2,9 +2,6 @@
   <div class="icon-container">
     <div class="icon">
       <svg width="35px" height="26px" viewBox="0 0 35 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <style>
-
-        </style>
         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g id="Shoppingcart">
             <circle id="Oval" class="cls-fill" cx="12" cy="22" r="2"></circle>
@@ -27,8 +24,8 @@
         <div *ngIf="amount > 0; else emptyCart">
           <table>
             <tr *ngFor="let item of items">
-              <td>{{ item.item.name }}</td>
-              <td>{{ item.amount }}</td>
+              <td class="name">{{ item.item.name }}</td>
+              <td class="amount">x{{ item.amount }}</td>
             </tr>
           </table>
         </div>

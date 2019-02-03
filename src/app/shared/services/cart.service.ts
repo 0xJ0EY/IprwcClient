@@ -94,6 +94,32 @@ export class CartService {
     this.saveToDisk();
   }
 
+  public updateProduct(product: Product, amount: number) {
+    if (amount < 1) {
+      this.deleteItem(product);
+      return;
+    }
+
+    const items = this._items.getValue();
+
+    // Add the item the product cannot be found
+    if (!items.has(product.title)) {
+      return this.addItem(product, amount);
+    }
+
+    const value = items.get(product.title);
+    value.amount = amount;
+
+    console.log(amount);
+
+    items.set(product.title, value);
+
+    console.log(items);
+
+    this._items.next(items);
+    this.saveToDisk();
+  }
+
   public clearCart(): void {
     this._items.next(new Map<string, CartItem>());
     this.saveToDisk();

@@ -1,0 +1,21 @@
+:host {
+  width: 100%;
+  margin: 15px 0;
+  height: 170px;
+  z-index: 10;
+  background-color: var(--accent-colour);
+  position: relative;
+  overflow-y: hidden;
+
+  span {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+
+    color: var(--fill-colour);
+
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 500;
+  }
+}

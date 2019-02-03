@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <app-banner [title]="'Winkelwagen'"></app-banner>
+
+    <div class="cart-container col-lg-8 col-12">
+      <div class="cart">
+        <div class="cart-row row m-0" *ngIf="items.length === 0">
+          <span>Het winkelmandje is nog leeg!</span>
+        </div>
+
+        <div class="cart-row row m-0" *ngFor="let cartItem of items">
+          <div class="col-2 image">
+            <ng-container *ngIf="cartItem.item.images.length > 0; else noImage">
+              <img src="{{ api }}{{ cartItem.item.images[0].imageName }}" alt="">
+            </ng-container>
+          </div>
+
+          <div class="col-4 product-name">
+            <h4>{{ cartItem.item.brand.name }}</h4>
+            <span>{{ cartItem.item.name }}</span>
+          </div>
+
+          <div class="col-4 form-group amount">
+            <input type="button"
+                   class="btn btn-primary left-btn"
+                   value="-"
+                   (click)="decrement(cartItem)">
+
+            <input type="number"
+                   class="form-control amount-value"
+                   [ngModel]="cartItem.amount"
+                   (change)="onChange($event, cartItem)"
+                   name="amount">
+
+            <input type="button"
+                   class="btn btn-primary right-btn"
+                   value="+"
+                   (click)="increment(cartItem)">
+
+          </div>
+
+          <div class="col-2 price">
+            {{ cartItem.item.price * cartItem.amount | currency: '&euro;' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-container col-lg-4 col-12">
+      <div class="order">
+
+        <div class="row">
+          <div class="col-4"><strong>Bezorging:</strong></div>
+          <div class="col-auto">Gratis</div>
+        </div>
+
+        <div class="row">
+          <div class="col-4"><strong>Totaal:</strong></div>
+          <div class="col-auto">{{ price | currency: '&euro;'}}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="order-btn">
+              <a routerLink="/bestellen">Bestellen</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noImage>
+  <img src="/assets/images/notfound.png" alt="">
+</ng-template>
