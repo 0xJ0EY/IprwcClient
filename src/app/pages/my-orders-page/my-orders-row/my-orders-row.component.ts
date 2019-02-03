@@ -7,7 +7,7 @@ import {TableRow} from '../../../table/interfaces/table-row.interface';
 
 /* tslint:disable */
 @Component({
-  selector: 'tr[app-brand-row]',
+  selector: 'tr[app-orders-row]',
   template: `    
       <td><a [routerLink]="['/bestellingen', data.id]">{{ data.firstname }}</a></td>
       <td>{{ data.lastname }}</td>

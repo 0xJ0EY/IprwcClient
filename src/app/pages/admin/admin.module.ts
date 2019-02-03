@@ -11,6 +11,10 @@ import { SubcategoryPageComponent } from './subcategory-page/subcategory-page.co
 import { SubcategoryRowComponent } from './subcategory-page/subcategory-row/subcategory-row.component';
 import { BrandPageComponent } from './brand-page/brand-page.component';
 import { BrandRowComponent } from './brand-page/brand-row/brand-row.component';
+import { OrdersPageComponent } from './orders-page/orders-page.component';
+import { UsersPageComponent } from './users-page/users-page.component';
+import {SharedModule} from '../../shared/shared.module';
+import {UsersRowComponent} from './users-page/users-page-row/users-row.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { BrandRowComponent } from './brand-page/brand-row/brand-row.component';
     SubcategoryPageComponent,
     SubcategoryRowComponent,
     BrandPageComponent,
-    BrandRowComponent
+    BrandRowComponent,
+    OrdersPageComponent,
+    UsersPageComponent,
+    UsersRowComponent
   ],
   imports: [
     CommonModule,
@@ -27,12 +34,14 @@ import { BrandRowComponent } from './brand-page/brand-row/brand-row.component';
     TableModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModalModule
+    NgbModalModule,
+    SharedModule
   ],
   entryComponents: [
     CategoryRowComponent,
     SubcategoryRowComponent,
-    BrandRowComponent
+    BrandRowComponent,
+    UsersRowComponent
   ]
 })
 export class AdminModule { }

@@ -12,7 +12,7 @@ export class MyOrderDetailPageComponent implements OnInit {
 
   public amount = 0;
   public total = 0;
-  public order: Order;
+  public order: Order = new Order();
 
   constructor(
     private orderService: OrderService,

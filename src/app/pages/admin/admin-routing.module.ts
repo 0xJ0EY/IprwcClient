@@ -4,6 +4,8 @@ import {CategoryPageComponent} from './category-page/category-page.component';
 import {SubcategoryPageComponent} from './subcategory-page/subcategory-page.component';
 import {BrandPageComponent} from './brand-page/brand-page.component';
 import {AdminAuthenticationGuard} from '../../shared/guards/admin-authentication.guard';
+import {UsersPageComponent} from './users-page/users-page.component';
+import {OrdersPageComponent} from './orders-page/orders-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
     path: 'producten',
     loadChildren: './products/products.module#ProductsModule',
     canActivate: [AdminAuthenticationGuard]
+  },
+  {
+    path: 'gebruikers',
+    component: UsersPageComponent
+  },
+  {
+    path: 'bestellingen',
+    component: OrdersPageComponent
   }
 ];
 
