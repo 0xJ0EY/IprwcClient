@@ -39,7 +39,7 @@ export class SubcategoryService implements Service<Subcategory> {
   }
 
   delete(key: any): Observable<Object> {
-    return this.http.delete<Subcategory>(environment.api + apiRoutes.subcategories).pipe(tap(() => {
+    return this.http.delete<Subcategory>(environment.api + apiRoutes.subcategories + '/' + key).pipe(tap(() => {
       this.categoryService.updateCategories();
     }));
   }

@@ -8,8 +8,9 @@ import {ProductOverviewRowComponent} from './product-overview-page/product-overv
 import { ProductEditPageComponent } from './product-edit-page/product-edit-page.component';
 import { ProductAddPageComponent } from './product-add-page/product-add-page.component';
 import {SharedModule} from '../../../shared/shared.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ProductImagesUploadComponent } from './product-images-upload/product-images-upload.component';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ProductImagesUploadComponent } from './product-images-upload/product-im
     SharedModule,
     ProductsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    NgbModalModule,
   ],
   entryComponents: [
     ProductOverviewRowComponent
