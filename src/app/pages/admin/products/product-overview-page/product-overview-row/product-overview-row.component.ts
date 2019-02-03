@@ -9,7 +9,7 @@ import {TableComponent} from '../../../../../table/components/table/table.compon
     <td>{{ data.subcategory?.name }}</td>
     <td>{{ data.brand?.name }}</td>
     <td>{{ data.name }}</td>
-    <td style="width: 20px" class="align-middle"><a class="material-icons">edit</a></td>
+    <td style="width: 20px" class="align-middle"><a [routerLink]="['aanpassen', data.id]" class="material-icons">edit</a></td>
     <td style="width: 20px" class="align-middle"><a class="material-icons">delete</a></td>
   `
 })

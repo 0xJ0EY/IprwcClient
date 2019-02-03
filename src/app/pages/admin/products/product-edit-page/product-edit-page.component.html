@@ -1,3 +1,117 @@
-<p>
-  product-edit-page works!
-</p>
+<div class="container">
+  <div class="row">
+    <app-small-banner [title]="'Producten'"></app-small-banner>
+
+    <form class="w-100 p-5" #productForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="subcategory">Subcategorie</label>
+        <select class="form-control"
+                id="subcategory"
+                name="subcategory"
+                [(ngModel)]="product.subcategory"
+                [compareWith]="compareSubcategories"
+                [disabled]="loading"
+                required
+                #subcategory="ngModel"
+        >
+          <option *ngFor="let subcategory of subcategories" [ngValue]="subcategory">
+            {{ subcategory.name }}
+          </option>
+        </select>
+
+        <div [hidden]="subcategory.valid || subcategory.pristine" class="alert alert-danger">
+          Subcategorie is verplicht
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subcategory">Merk</label>
+        <select class="form-control"
+                id="brand"
+                name="brand"
+                [(ngModel)]="product.brand"
+                [compareWith]="compareBrands"
+                [disabled]="loading"
+                required
+                #brand="ngModel"
+        >
+          <option *ngFor="let brand of brands" [ngValue]="brand">
+            {{ brand.name }}
+          </option>
+        </select>
+
+        <div [hidden]="brand.valid || brand.pristine" class="alert alert-danger">
+          Merk is verplicht
+        </div>
+      </div>
+
+      <app-product-images-upload [(ngModel)]="product.images" name="images"></app-product-images-upload>
+
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input class="form-control"
+               id="name"
+               type="text"
+               name="name"
+               [(ngModel)]="product.name"
+               [disabled]="loading"
+               required #name="ngModel">
+
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Naam is verplicht
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Prijs</label>
+        <input class="form-control"
+               id="price"
+               type="number"
+               name="price"
+               [(ngModel)]="product.price"
+               [disabled]="loading"
+               required #price="ngModel">
+
+        <div [hidden]="price.valid || price.pristine" class="alert alert-danger">
+          Prijs is verplicht
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vat">BTW percentage</label>
+        <input class="form-control"
+               id="vat"
+               type="number"
+               min="0" max="100"
+               name="vat"
+               [(ngModel)]="product.vat"
+               [disabled]="loading"
+               required #vat="ngModel">
+
+        <div [hidden]="vat.valid || vat.pristine" class="alert alert-danger">
+          BTW is verplicht
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Beschrijving</label>
+        <textarea class="form-control"
+                  name="description"
+                  [(ngModel)]="product.description"
+                  [disabled]="loading"
+                  id="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="submit"
+               class="btn btn-primary float-right"
+               [disabled]="loading || !productForm.form.valid"
+               value="Opslaan">
+      </div>
+
+
+    </form>
+
+  </div>
+</div>

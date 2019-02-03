@@ -23,9 +23,7 @@ export class UsersPageComponent implements OnInit {
       UsersRowComponent,
       [
         new TableHeader('Gebruikersnaam', 'username', false, true),
-        new TableHeader('E-mail', 'email', false, true),
-        new TableHeader('', '', false, false),
-        new TableHeader('', '', false, false)
+        new TableHeader('E-mail', 'email', false, true)
       ],
       this.http
     );

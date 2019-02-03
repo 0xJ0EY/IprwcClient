@@ -21,6 +21,10 @@ export class ProductService implements Service<Product> {
     return this.http.get<Product>(environment.api + apiRoutes.products + '/' + key);
   }
 
+  fetchEdit(key: any): Observable<Product> {
+    return this.http.get<Product>(environment.api + apiRoutes.products + '/edit/' + key);
+  }
+
   create(obj: Product): Observable<Product> {
     return this.http.post<Product>(environment.api + apiRoutes.products, obj);
   }
