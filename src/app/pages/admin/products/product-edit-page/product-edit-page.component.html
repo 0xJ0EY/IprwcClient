@@ -20,7 +20,7 @@
           </option>
         </select>
 
-        <div [hidden]="subcategory.valid || subcategory.pristine" class="alert alert-danger">
+        <div [hidden]="subcategory.valid || subcategory.pristine || loading" class="alert alert-danger">
           Subcategorie is verplicht
         </div>
       </div>
@@ -41,7 +41,7 @@
           </option>
         </select>
 
-        <div [hidden]="brand.valid || brand.pristine" class="alert alert-danger">
+        <div [hidden]="brand.valid || brand.pristine || loading" class="alert alert-danger">
           Merk is verplicht
         </div>
       </div>
@@ -58,7 +58,7 @@
                [disabled]="loading"
                required #name="ngModel">
 
-        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        <div [hidden]="name.valid || name.pristine || loading" class="alert alert-danger">
           Naam is verplicht
         </div>
       </div>
@@ -73,7 +73,7 @@
                [disabled]="loading"
                required #price="ngModel">
 
-        <div [hidden]="price.valid || price.pristine" class="alert alert-danger">
+        <div [hidden]="price.valid || price.pristine || loading" class="alert alert-danger">
           Prijs is verplicht
         </div>
       </div>
@@ -89,7 +89,7 @@
                [disabled]="loading"
                required #vat="ngModel">
 
-        <div [hidden]="vat.valid || vat.pristine" class="alert alert-danger">
+        <div [hidden]="vat.valid || vat.pristine || loading" class="alert alert-danger">
           BTW is verplicht
         </div>
       </div>

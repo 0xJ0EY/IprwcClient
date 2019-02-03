@@ -1,3 +1,61 @@
-<p>
-  login-page works!
-</p>
+<div class="container">
+  <div class="row col-lg-6 col-md-8 p-0 col-12 header">
+    <app-small-banner [title]="'Inloggen'"></app-small-banner>
+  </div>
+
+  <div class="row m-0">
+    <div class="col-lg-6 col-md-8 col-12 login-menu">
+
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="form_username">Gebruikersnaam</label>
+          <input type="text"
+                 id="form_username"
+                 name="username"
+                 class="form-control"
+                 [disabled]="loading"
+                 [(ngModel)]="user.username"
+                 #username="ngModel"
+                 required
+          >
+        </div>
+
+        <div [hidden]="username.valid || username.pristine || loading" class="alert alert-danger">
+          Gebruikersnaam is verplicht
+        </div>
+
+        <div class="form-group">
+          <label for="form_password">Wachtwoord</label>
+          <input type="password"
+                 id="form_password"
+                 name="password"
+                 class="form-control"
+                 [disabled]="loading"
+                 [(ngModel)]="user.password"
+                 #password="ngModel"
+                 required
+          >
+        </div>
+
+        <div [hidden]="password.valid || password.pristine || loading" class="alert alert-danger">
+          Wachtwoord is verplicht
+        </div>
+
+        <div [hidden]="error.length === 0" class="alert alert-danger">
+          {{ error }}
+        </div>
+
+        <input type="submit"
+               class="btn btn-primary float-right"
+               [disabled]="!loginForm.valid"
+               value="Inloggen">
+
+      </form>
+
+
+
+    </div>
+  </div>
+
+
+</div>
